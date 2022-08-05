@@ -33,6 +33,5 @@ func ProviderHandler() *mongo.Client {
 var DB *mongo.Client = ProviderHandler()
 
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-	collection := client.Database("restaurantDB").Collection(collectionName)
-	return collection
+	return client.Database("restaurantDB").Collection(collectionName)
 }

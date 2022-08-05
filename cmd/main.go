@@ -6,12 +6,19 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+}
 
+func run() error {
 	r := mux.NewRouter()
 	providers.ProviderHandler()
 	r.HandleFunc("/reserve", controllers.GetReserves()).Methods("GET")
@@ -21,4 +28,6 @@ func main() {
 
 	fmt.Printf("Starting server at port 8000\n")
 	log.Fatal(http.ListenAndServe(":8000", r))
+
+	return nil
 }

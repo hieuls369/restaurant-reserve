@@ -36,7 +36,6 @@ var defaults = map[string]string{
 func (cs Config) GetMongoDbUri() string { return cs.MongoDbUri }
 
 func LoadConfig() (Config, error) {
-
 	for k, v := range defaults {
 		viper.SetDefault(k, v)
 	}
@@ -60,5 +59,4 @@ func LoadConfig() (Config, error) {
 
 	fmt.Println(config)
 	return config, nil
-
 }
